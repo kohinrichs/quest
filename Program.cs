@@ -14,7 +14,26 @@ namespace Quest
             Console.WriteLine("Hello! Who are you?");
             string name = Console.ReadLine();
 
-            while (Again == true)
+            // Console.WriteLine("What color is your robe?");
+            // string color = Console.ReadLine();
+
+            Robe playerRobe = new Robe();
+            {
+                playerRobe.RobeLength = 36;
+                playerRobe.RobeColors = new List<string>()
+                {
+                    "blue",
+                    "green",
+                    "red"
+                };
+            };
+
+            // Make a new "Adventurer" object using the "Adventurer" class
+            Adventurer theAdventurer = new Adventurer(name, playerRobe);
+
+            Console.WriteLine(theAdventurer.GetDescription());
+
+            while (Again)
             {
                 // Create a few challenges for our Adventurer's quest
                 // The "Challenge" Constructor takes three arguments
@@ -49,8 +68,6 @@ namespace Quest
                 int minAwesomeness = 0;
                 int maxAwesomeness = 100;
 
-                // Make a new "Adventurer" object using the "Adventurer" class
-                Adventurer theAdventurer = new Adventurer(name);
 
                 // A list of challenges for the Adventurer to complete
                 // Note we can use the List class here because have the line "using System.Collections.Generic;" at the top of the file.
