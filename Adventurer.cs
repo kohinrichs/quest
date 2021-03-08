@@ -54,14 +54,14 @@ namespace Quest
         {
             string finalColors = "";
 
-            List<string> RobeColors = new List<string>();
-            RobeColors = ColorfulRobe.RobeColors;
+            // List<string> RobeColors = new List<string>();
+            // RobeColors = ColorfulRobe.RobeColors;
 
-            foreach (string color in RobeColors)
+            foreach (string color in ColorfulRobe.RobeColors)
             {
                 finalColors += $"{color} ";
             }
-            return $"Adventurer, {Name} is wearing a {finalColors} robe that is {ColorfulRobe.RobeLength} inches long. Good luck on your quest!";
+            return $"Adventurer, {Name} is wearing a {finalColors}robe that is {ColorfulRobe.RobeLength} inches long. Good luck on your quest!";
         }
     }
 }
