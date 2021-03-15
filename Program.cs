@@ -28,8 +28,14 @@ namespace Quest
                 };
             };
 
+            Hat playerHat = new Hat();
+            {
+                playerHat.ShininessLevel = 5;
+                playerHat.ShininessDescription = "dull";
+            }
+
             // Make a new "Adventurer" object using the "Adventurer" class
-            Adventurer theAdventurer = new Adventurer(name, playerRobe);
+            Adventurer theAdventurer = new Adventurer(name, playerRobe, playerHat);
 
             Console.WriteLine(theAdventurer.GetDescription());
 

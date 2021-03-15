@@ -16,12 +16,15 @@ namespace Quest
 
         public Robe ColorfulRobe { get; }
 
+        public Hat ShinyHat { get; set; }
+
         // A constructor to make a new Adventurer object with a given name
-        public Adventurer(string name, Robe playerRobe)
+        public Adventurer(string name, Robe playerRobe, Hat playerHat)
         {
             Name = name;
             Awesomeness = 50;
             ColorfulRobe = playerRobe;
+            ShinyHat = playerHat;
         }
 
         // This method returns a string that describes the Adventurer's status
@@ -61,7 +64,7 @@ namespace Quest
             {
                 finalColors += $"{color} ";
             }
-            return $"Adventurer, {Name} is wearing a {finalColors}robe that is {ColorfulRobe.RobeLength} inches long. Good luck on your quest!";
+            return $"Adventurer, {Name} is wearing a {finalColors}robe that is {ColorfulRobe.RobeLength} inches long and a very {ShinyHat.ShininessDescription} hat. Good luck on your quest!";
         }
     }
 }
