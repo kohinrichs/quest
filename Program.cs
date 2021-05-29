@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 // Every class in the program is defined within the "Quest" namespace
 // Classes within the same namespace refer to one another without a "using" statement
@@ -11,7 +12,7 @@ namespace Quest
             Console.WriteLine("Hello! Who are you?");
             string name = Console.ReadLine();
 
-            Console.WriteLine("What color is your robe?");
+            Console.WriteLine("What color(s) is your robe?");
             string robeColor = Console.ReadLine();
 
             Console.WriteLine("How long is your robe? (Just the number will do.)");
@@ -19,19 +20,16 @@ namespace Quest
             int robeLength = Int32.Parse(length);
 
             Robe playerRobe = new Robe();
-            {
-                playerRobe.Colors = robeColor;
-                playerRobe.Length = robeLength;
-            };
+            playerRobe.Colors = robeColor;
+            playerRobe.Length = robeLength;
 
             Console.WriteLine("Now tell me about your hat. How shiny is it on a scale of 1-10? ");
             string level = Console.ReadLine();
             int shinyLevel = Int32.Parse(level);
 
             Hat playerHat = new Hat();
-            {
-                playerHat.ShininessLevel = shinyLevel;
-            }
+            playerHat.ShininessLevel = shinyLevel;
+
 
             // Make a new "Adventurer" object using the "Adventurer" class
             Adventurer theAdventurer = new Adventurer(name, playerRobe, playerHat);
@@ -76,7 +74,7 @@ namespace Quest
 
                // --------------------------------------------------------------------------------------
 
-                Challenge aroundTheWorld = new Challenge("How long does it take to travel around the world?", 81, 25); 
+                Challenge aroundTheWorld = new Challenge("How many days does it take to travel around the world?", 81, 25); 
                 // --------------------------------------------------------------------------------------
 
                 Challenge numberOfSeasons = new Challenge("How many seasons are there?", 4, 10); 
@@ -103,13 +101,21 @@ namespace Quest
             bool playing = true;
            
             while (playing)
-            {        
-                // Loop through 5 challenges and subject the Adventurer to them
-                for (int i = 0; i < 5; i++)
-                {
-                    int challengeNumber = new Random().Next(0, challenges.Count);
-                    challenges[challengeNumber].RunChallenge(theAdventurer);
-                }
+            {    
+                // create list of 5 random challenges
+                 List <Challenge> listOfChallenges = challenges.OrderBy(x => Guid.NewGuid()).Take(5).ToList(); 
+
+                 foreach(Challenge challenge in listOfChallenges)
+                 {
+                     challenge.RunChallenge(theAdventurer);
+                 }  
+                 
+                // This also works but leads to repeat challenges in the same set
+                // for (int i = 0; i < 5; i++)
+                // {
+                //     int challengeNumber = new Random().Next(0, challenges.Count);
+                //     challenges[challengeNumber].RunChallenge(theAdventurer);
+                // }
 
                 // This code examines how Awesome the Adventurer is after completing the challenges and praises or humiliates them accordingly
                 if (theAdventurer.Awesomeness >= maxAwesomeness)
@@ -144,7 +150,9 @@ namespace Quest
 
                 if (answer == "y")
                 {
-                    playing = true;
+                    theAdventurer.Awesomeness = theAdventurer.SuccessfullChallenges * 10;
+                    theAdventurer.SuccessfullChallenges = 0;
+                    Console.Clear();
                 }
                 else
                 {
