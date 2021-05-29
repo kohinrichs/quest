@@ -28,6 +28,7 @@ namespace Quest
         public string GetAdventurerStatus()
         {
             string status = "okay";
+            
             if (Awesomeness >= 75)
             {
                 status = "great";
