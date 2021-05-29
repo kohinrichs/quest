@@ -51,12 +51,12 @@ namespace Quest
                 // --------------------------------------------------------------------------------------
 
                 Challenge whatSecond = new Challenge(
-                    "What is the current second?", DateTime.Now.Second, 10);
+                    "What is the current second?", DateTime.Now.Second, 25);
 
                 // --------------------------------------------------------------------------------------
 
                 int randomNumber = new Random().Next() % 10;
-                Challenge guessRandom = new Challenge("What number am I thinking of?", randomNumber,5);
+                Challenge guessRandom = new Challenge("What number am I thinking of?", randomNumber, 35);
 
                 // --------------------------------------------------------------------------------------
 
@@ -73,6 +73,13 @@ namespace Quest
                 // --------------------------------------------------------------------------------------
 
                 Challenge favoriteNumber = new Challenge("What's my favorite number?", 7, 25);
+
+               // --------------------------------------------------------------------------------------
+
+                Challenge aroundTheWorld = new Challenge("How long does it take to travel around the world?", 81, 25); 
+                // --------------------------------------------------------------------------------------
+
+                Challenge numberOfSeasons = new Challenge("How many seasons are there?", 4, 10); 
            
            
                // A list of challenges for the Adventurer to complete
@@ -83,25 +90,25 @@ namespace Quest
                 whatSecond,
                 guessRandom,
                 favoriteBeatle,
-                favoriteNumber
+                favoriteNumber,
+                aroundTheWorld,
+                numberOfSeasons
             };
 
             // "Awesomeness" is like our Adventurer's current "score". A higher Awesomeness is better
-
             // Here we set some reasonable min and max values.
-            //  If an Adventurer has an Awesomeness greater than the max, they are truly awesome
-            //  If an Adventurer has an Awesomeness less than the min, they are terrible
                 int minAwesomeness = 0;
                 int maxAwesomeness = 100;
 
             bool playing = true;
            
             while (playing)
-            {
-                // Loop through all the challenges and subject the Adventurer to them
-                foreach (Challenge challenge in challenges)
+            {        
+                // Loop through 5 challenges and subject the Adventurer to them
+                for (int i = 0; i < 5; i++)
                 {
-                    challenge.RunChallenge(theAdventurer);
+                    int challengeNumber = new Random().Next(0, challenges.Count);
+                    challenges[challengeNumber].RunChallenge(theAdventurer);
                 }
 
                 // This code examines how Awesome the Adventurer is after completing the challenges and praises or humiliates them accordingly
@@ -115,7 +122,7 @@ namespace Quest
                 }
                 else
                 {
-                    Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
+                    Console.WriteLine("I guess you did pretty well!");
                 }
 
                 Prize prize = new Prize("Teddy Bear");
