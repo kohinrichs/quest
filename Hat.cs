@@ -12,8 +12,6 @@ namespace Quest
             }
             set
             {
-
-
                 if (ShininessLevel >= 2 && ShininessLevel <= 5)
                 {
                     _shininessDescription = "noticeable";

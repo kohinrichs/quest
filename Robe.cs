@@ -3,7 +3,7 @@ namespace Quest
 {
     public class Robe
     {
-        public List<string> RobeColors { get; set; }
-        public int RobeLength { get; set; }
+        public string Colors { get; set; }
+        public int Length { get; set; }
     }
 }

@@ -4,8 +4,7 @@ using System.Collections.Generic;
 // Every class in the program is defined within the "Quest" namespace
 // Classes within the same namespace refer to one another without a "using" statement
 namespace Quest
-{
-    class Program
+{    class Program
     {
         static void Main(string[] args)
         {
@@ -14,19 +13,22 @@ namespace Quest
             Console.WriteLine("Hello! Who are you?");
             string name = Console.ReadLine();
 
-            // Console.WriteLine("What color is your robe?");
-            // string color = Console.ReadLine();
+            Console.WriteLine("What color is your robe?");
+            string robeColor = Console.ReadLine();
+
+            Console.WriteLine("How long is your robe? (Just the number will do.)");
+            string length = Console.ReadLine();
+            int robeLength = Int32.Parse(length);
 
             Robe playerRobe = new Robe();
             {
-                playerRobe.RobeLength = 36;
-                playerRobe.RobeColors = new List<string>()
-                {
-                    "blue",
-                    "green",
-                    "red"
-                };
+                playerRobe.Colors = robeColor;
+                playerRobe.Length = robeLength;
             };
+
+            Console.WriteLine("Now tell me about your hat. How ");
+            string length = Console.ReadLine();
+            int robeLength = Int32.Parse(length);
 
             Hat playerHat = new Hat();
             {
