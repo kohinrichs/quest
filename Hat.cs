@@ -3,26 +3,25 @@ namespace Quest
     public class Hat
     {
         public int ShininessLevel { get; set; }
-        private string _shininessDescription;
         public string ShininessDescription
         {
             get
             {
-                return _shininessDescription;
-            }
-            set
-            {
-                if (ShininessLevel >= 2 && ShininessLevel <= 5)
+                if (ShininessLevel < 2)
                 {
-                    _shininessDescription = "noticeable";
+                    return "dull";
                 }
-                else if (ShininessLevel >= 6 && ShininessLevel <= 9)
+                else if (ShininessLevel <= 5)
                 {
-                    _shininessDescription = "bright";
+                    return "noticeable";
                 }
-                else if (ShininessLevel > 9)
+                else if (ShininessLevel <= 9)
                 {
-                    _shininessDescription = "blinding";
+                    return "bright";
+                }
+                else
+                {
+                    return "blinding";
                 }
             }
         }

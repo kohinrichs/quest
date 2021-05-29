@@ -26,14 +26,13 @@ namespace Quest
                 playerRobe.Length = robeLength;
             };
 
-            Console.WriteLine("Now tell me about your hat. How ");
-            string length = Console.ReadLine();
-            int robeLength = Int32.Parse(length);
+            Console.WriteLine("Now tell me about your hat. How shiny is it on a scale of 1-10? ");
+            string level = Console.ReadLine();
+            int shinyLevel = Int32.Parse(level);
 
             Hat playerHat = new Hat();
             {
-                playerHat.ShininessLevel = 5;
-                playerHat.ShininessDescription = "dull";
+                playerHat.ShininessLevel = shinyLevel;
             }
 
             // Make a new "Adventurer" object using the "Adventurer" class
